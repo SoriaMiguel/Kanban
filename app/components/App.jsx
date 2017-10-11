@@ -26,8 +26,7 @@ export default class App extends React.Component {
     return (
       <div>
         <button onClick={this.addNote}>+</button>
-
-        <Notes notes={notes} />
+        <Notes notes={notes} onDelete={this.deleteNote} />
       </div>
     );
   }
@@ -51,4 +50,18 @@ export default class App extends React.Component {
     });
   }
 
+  deleteNote = (id, e) => {
+    // avoid bubbling to edit
+    e.stopPropagation();
+
+    this.setState({
+      notes: this.state.notes.filter(note => note.id !== id)
+    });
+  }
 }
+
+
+//To prepare for the future I added an extra line in form
+//of e.stopPropagation(). The idea of this is to tell the DOM to stop
+//bubbling events. In short, we'll avoid triggering possible
+//other events elsewhere in the structure if we delete a note.
