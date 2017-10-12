@@ -1,16 +1,25 @@
 import React from 'react';
 import Note from './Note';
 
-export default ({notes, onDelete=() => {}}) => (
-  <ul>{notes.map(({id, task}) =>
-    <li key={id}>
-      <Note>
-        <span>{task}</span>
-        <button onClick={onDelete.bind(null, id)}>x</button>
-      </Note>
-    </li>
-  )}</ul>
-)
+import Editable from './Editable';
+
+export default ({
+  notes,
+  onNoteClick=() => {}, onEdit=() => {}, onDelete=() => {}
+}) => (
+
+  <ul>{notes.map(({id, editing, task}) =>
+      <li key={id}>
+        <Note onClick={onNoteClick.bind(null, id)}>
+          <Editable
+             editing={editing}
+             value={task}
+             onEdit={onEdit.bind(null, id)} />
+          <button onClick={onDelete.bind(null, id)}>x</button>
+        </Note>
+      </li>
+    )}</ul>
+  )
 
 //bind allows us to set the function context (first parameter)
 //and arguments (following parameters). This gives us a technique
