@@ -3,6 +3,7 @@ import NoteActions from '../actions/NoteActions';
 
 export default class NoteStore {
   constructor() {
+    this.bindActions(NoteActions);
     this.notes = [
       {
         id: uuid.v4(),
@@ -16,7 +17,9 @@ export default class NoteStore {
   }
 
   create(note) {
-    console.log('create note', note);
+    this.setState({
+      notes: this.notes.concat(note)
+    });
   }
   update(updatedNote) {
     console.log('update note', updatedNote);
