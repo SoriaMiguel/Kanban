@@ -23,10 +23,11 @@ export default class NoteStore {
   }
   update(updatedNote) {
     this.setState({
-      nores: this.notes.map(note => {
+      notes: this.notes.map(note => {
         if(note.id === updatedNote.id) {
           return Object.assign({}, note, updatedNote);
         }
+
         return note;
       })
     });
