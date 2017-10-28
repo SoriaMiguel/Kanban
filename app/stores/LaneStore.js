@@ -6,6 +6,7 @@ export default class LaneStore {
 
     this.lanes = [];
   }
+  
   create(lane) {
     // If `notes` aren't provided for some reason,
     // default to an empty array.
