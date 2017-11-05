@@ -6,7 +6,7 @@ export default class LaneStore {
 
     this.lanes = [];
   }
-  
+
   create(lane) {
     // If `notes` aren't provided for some reason,
     // default to an empty array.
@@ -14,6 +14,18 @@ export default class LaneStore {
 
     this.setState({
       lanes: this.lanes.concat(lane)
+    });
+  }
+
+  update(updatedLane) {
+    this.setState({
+      lanes: this.lanes.map(lane => {
+        if(lane.id === updatedLane.id) {
+          return Object.assign({}, lane, updatedLane);
+        }
+
+        return lane;
+      })
     });
   }
 
