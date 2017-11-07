@@ -8,6 +8,7 @@ import LaneHeader from './LaneHeader';
 const Lane = ({
   lane, notes, LaneActions, NoteActions, ...props
 }) => {
+
   const editNote = (id, task) => {
     NoteActions.update({id, task, editing: false});
   };
@@ -21,6 +22,7 @@ const Lane = ({
     });
     NoteActions.delete(noteId);
   };
+  
   const activateNoteEdit = id => {
     NoteActions.update({id, editing: true});
   };
