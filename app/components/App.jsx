@@ -6,6 +6,7 @@ import HTML5Backend from 'react-dnd-html5-backend';
 import connect from '../libs/connect';
 import Lanes from './Lanes';
 import LaneActions from '../actions/LaneActions';
+import '../main.css'
 
 const App = ({LaneActions, lanes}) => {
   const addLane = () => {
@@ -17,6 +18,8 @@ const App = ({LaneActions, lanes}) => {
 
   return (
     <div>
+      <h1 className="header">Miguello</h1>
+      <h2 className="sub-header">A basic <a className="trello">Trello</a> Clone built with React and Flux</h2>
       <button className="add-lane" onClick={addLane}>+</button>
       <Lanes lanes={lanes} />
     </div>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Damion');
+
 body {
   background-color: #91AAC0;
 
@@ -113,4 +115,28 @@ body {
 }
 .note:hover .delete {
   visibility: visible;
+}
+
+.header {
+  font-family: 'Damion', cursive;
+  color: white;
+  font-size: 50pt;
+  text-align: center;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.sub-header {
+  color: white;
+  text-align: center;
+  margin-top: -10px;
+}
+
+.trello{
+  font-size: 30pt;
+  font-family: 'Damion', cursive;
+  color: white;
+  text-align: center;
+  margin-top: -10px;
+  padding-right: 5px;
 }
