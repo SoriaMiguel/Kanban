@@ -28,7 +28,7 @@ const noteTarget = {
     const sourceProps = monitor.getItem();
     const sourceId = sourceProps.id;
 
-    if(sourceID !== targetId) {
+    if(sourceId !== targetId) {
       targetProps.onMove({sourceId, targetId});
     }
   }
