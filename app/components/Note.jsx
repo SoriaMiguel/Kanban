@@ -1,11 +1,13 @@
 import React from 'react';
-import {DragSource} from 'react-dnd';
+import {compose} from 'redux';
+import {DragSource, DropTarget} from 'react-dnd';
 import ItemTypes from '../constants/itemTypes';
 
 const Note = ({
-  connectDragSource, children, ...props
+  connectDragSource, connectDropTarget,
+  onMove, id, children, ...props
 }) => {
-  return connectDragSource(
+  return compose(connectDragSource, connectDropTarget)(
     <div {...props}>
       {children}
     </div>
@@ -14,12 +16,29 @@ const Note = ({
 
 const noteSource = {
   beginDrag(props) {
-    console.log('begin dragging note', props);
-
-    return {};
+    return {
+      id: props.id
+    };
   }
 };
 
-export default DragSource(ItemTypes.NOTE, noteSource, connect => ({
-  connectDragSource: connect.dragSource()
-}))(Note)
+const noteTarget = {
+  hover(targetProps, monitor) {
+    const targetId = targetProps.id;
+    const sourceProps = monitor.getItem();
+    const sourceId = sourceProps.id;
+
+    if(sourceId !== targetId) {
+      targetProps.onMove({sourceId, targetId});
+    }
+  }
+};
+
+export default compose(
+  DragSource(ItemTypes.NOTE, noteSource, connect => ({
+    connectDragSource: connect.dragSource()
+  })),
+  DropTarget(ItemTypes.NOTE, noteTarget, connect => ({
+    connectDropTarget: connect.dropTarget()
+  }))
+)(Note)
