@@ -62,5 +62,7 @@
     "react-dnd-html5-backend": "^2.5.4",
     "react-dom": "^15.1.0",
     "redux": "^3.7.2"
-  }
+  },
+  "homepage": "https://soriamiguel.github.io/Kanban",
+  "deploy" : "npm run build&&gh-pages -d build"
 }
