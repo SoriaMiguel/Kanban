@@ -5,9 +5,9 @@ import ItemTypes from '../constants/itemTypes';
 
 const Note = ({
   connectDragSource, connectDropTarget, isDragging, isOver,
-  onMove, id, children, ...props
+  onMove, id, editing, children, ...props
 }) => {
-  return compose(connectDragSource, connectDropTarget)(
+  return compose(dragSource, connectDropTarget)(
     <div style={{
         opacity: isDragging || isOver ? 0 : 1
       }} {...props}>{children}</div>
