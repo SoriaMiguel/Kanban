@@ -64,5 +64,5 @@
     "redux": "^3.7.2"
   },
   "homepage": "https://soriamiguel.github.io/Kanban",
-  "deploy" : "npm run build&&gh-pages -d build"
+  "deploy": "npm run build&&gh-pages -d build"
 }
